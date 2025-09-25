@@ -1,0 +1,25 @@
+Calculadora avance
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def home():
+    mensaje += '<h1>¡Bienvenido a la Calculadora web!</h1>'
+    
+    mensaje += '<li><h2>¡Suma!</h2></li>'
+    mensaje += '<li><h2>¡Resta!</h2></li>'
+    mensaje += '<li><h2>¡Multiplicacion!</h2></li>'
+    mensaje += '<li><h2>¡Division!</h2></li>'
+    mensaje += '<li><h2>¡Minimo!</h2></li>'
+    mensaje += '<li><h2>¡Maximo!</h2></li>'
+
+    mensaje +='</ol>'
+    return mensaje
+
+@app.route('/sumar/<v1>/<v2>')
+def sumar(v1,v2):
+    s = str(float(v1) + float(v2))
+    mensaje = f"<h1>La suma de {v1} + {v2} es {s} </h1>"
+    return mensaje
+
+if __name__ == '__main__':
+    app.run(debug=True)
